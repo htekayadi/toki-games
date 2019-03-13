@@ -40,10 +40,14 @@ public class FlightServiceImpl implements FlightService {
         flightAPI = retrofit.create(FlightAPI.class);
     }
 
-    private static final String ARRIVAL_ASC = "arrivalTime";
-    private static final String DEPARTURE_ASC = "departureTime";
-    private static final String ARRIVAL_DESC = "-arrivalTime";
-    private static final String DEPARTURE_DESC = "-departureTime";
+    private static final String ARRIVAL_ASC = "arrival";
+    private static final String DEPARTURE_ASC = "departure";
+    private static final String ARRIVAL_DESC = "-arrival";
+    private static final String DEPARTURE_DESC = "-departure";
+    private static final String ARRIVAL_TIME_ASC = "arrivalTime";
+    private static final String DEPARTURE_TIME_ASC = "departureTime";
+    private static final String ARRIVAL_TIME_DESC = "-arrivalTime";
+    private static final String DEPARTURE_TIME_DESC = "-departureTime";
 
     @Override
     public Page<Flight> getFlights(Integer page, Integer perPage, String sortBy) throws IOException {
@@ -65,7 +69,11 @@ public class FlightServiceImpl implements FlightService {
     private Sort getSortByObject(String sort){
         if (ARRIVAL_ASC.equals(sort) || DEPARTURE_ASC.equals(sort)){
             return Sort.by(sort.replace("-","")).ascending();
-        }else if (ARRIVAL_DESC.equals(sort) || DEPARTURE_DESC.equals(sort)){
+        } else if (ARRIVAL_DESC.equals(sort) || DEPARTURE_DESC.equals(sort)){
+            return Sort.by(sort.replace("-","")).descending();
+        } else if (ARRIVAL_TIME_ASC.equals(sort) || DEPARTURE_TIME_ASC.equals(sort)){
+            return Sort.by(sort.replace("-","")).ascending();
+        } else if (ARRIVAL_TIME_DESC.equals(sort) || DEPARTURE_TIME_DESC.equals(sort)){
             return Sort.by(sort.replace("-","")).descending();
         } else {
             return Sort.unsorted();
