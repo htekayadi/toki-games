@@ -17,16 +17,24 @@ public class BusinessFlightDTO {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-    public Flight getModel() {
-        String[] itinerary = flight.split(" -> ");
+    public String getDepartureLocation() {
+        String[] itinerary = this.flight.split(" -> ");
+        return itinerary[0].trim();
+    }
 
+    public String getArrivalLocation() {
+        String[] itinerary = this.flight.split(" -> ");
+        return itinerary[1].trim();
+    }
+
+    public Flight getModel() {
         return new Flight(
                 this.uuid,
-                itinerary[0],
-                itinerary[1],
+                getDepartureLocation(),
+                getArrivalLocation(),
                 LocalDateTime.parse(departure, formatter),
                 LocalDateTime.parse(arrival, formatter),
-                Flight.Type.BUSINESS
+                Flight.FlightClass.BUSINESS
         );
     }
 }

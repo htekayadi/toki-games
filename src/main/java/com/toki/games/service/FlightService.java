@@ -1,14 +1,14 @@
 package com.toki.games.service;
 
 import com.toki.games.model.Flight;
+import org.springframework.data.domain.Page;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
- * PersonService interface for Persons.
+ * FlightService interface for Flights.
  *
  */
 public interface FlightService {
-    List<Flight> getFlights() throws IOException;
+    Page<Flight> getFlights(Integer page, Integer perPage, String sortBy) throws IOException;
 }
