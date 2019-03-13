@@ -18,7 +18,7 @@ The API is build using Java and Spring boot.
 ### Local Installation
 #### Prerequisites:
 - JDK 8
-- Apache Maven
+- Gradle
 
 #### Start using API
 https://localhost:8080/api/flights
@@ -27,7 +27,7 @@ https://localhost:8080/api/flights
  
 To filter returned fields, you can add "fields" as request parameter as shown below.
  
- `GET /api/flights?fields=type,departureTime`
+ `GET /api/flights?fields=departure,type`
  
 ## Pagination - Request
  
@@ -39,6 +39,6 @@ Pagination is implemented as default feature. All you need to do set "page" or/a
  
 Sorting is implemented for departureTime and arrivalTime. You need to set "sort" request parameter to have sorted data.
  
- `GET /api/flights?sort=departureTime`  
+ `GET /api/flights?sort=departure`  
  
 Note: 8080 is the default port.
